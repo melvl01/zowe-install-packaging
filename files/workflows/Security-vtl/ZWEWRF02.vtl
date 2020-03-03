@@ -1,5 +1,5 @@
 #if( $jobCard and $jobCard != "" and $jobCard != '#jobCard')
-//ZWE1SMPE JOB ${acct},
+//ZWESECUR JOB ${acct},
 // NOTIFY=&SYSUID,
 #if( $sysaff and $sysaff != "" and $sysaff != '#sysaff')
 // SYSAFF=${sysaff},
@@ -35,37 +35,37 @@
 //* 1) Add job name and job parameters to the JOB statement, to
 //*    meet your system requirements.
 //*
-//* 2) Update ${PRODUCT} statement to match your security
+//* 2) Update the SET PRODUCT= statement to match your security
 //*    product.
 //*
-//* 3) Update ${ADMINGRP} statement to match the desired
+//* 3) Update the SET ADMINGRP= statement to match the desired
 //*    group name for Zowe administrators.
 //*
-//* 4) Update ${STCGROUP} statement to match the desired
+//* 4) Update the SET STCGROUP= statement to match the desired
 //*    group name for started tasks.
 //*
-//* 5) Update ${ZOWEUSER} statement to match the desired
+//* 5) Update the SET ZOWEUSER= statement to match the desired
 //*    user ID for the ZOWE started task.
 //*
-//* 6) Update ${XMEMUSER} statement to match the desired
+//* 6) Update the SET XMEMUSER= statement to match the desired
 //*    user ID for the XMEM started task.
 //*
-//* 7) Update ${AUXUSER} statement to match the desired
+//* 7) Update the SET AUXUSER= statement to match the desired
 //*    user ID for the XMEM Auxilary started task.
 //*
-//* 8) Update ${ZOWESTC} statement to match the desired
+//* 8) Update the SET ZOWESTC= statement to match the desired
 //*    Zowe started task name.
 //*
-//* 9) Update ${XMEMSTC} statement to match the desired
+//* 9) Update the SET XMEMSTC= statement to match the desired
 //*    XMEM started task name.
 //*
-//* 10) Update ${AUXSTC} statement to match the desired
+//* 10) Update the SET AUXSTC= statement to match the desired
 //*    XMEM Auxilary started task name.
 //*
-//* 11) Change ${HLQ} to the high level qualifier to match the desired
-//*     Zowe data set high level qualifier 
+//* 11) Update the SET HLQ= statement to match the desired
+//*     Zowe data set high level qualifier.
 //*
-//* 12) Update ${SYSPROG} statement to match the existing
+//* 12) Update the SET SYSPROG= statement to match the existing
 //*     user ID or group used by z/OS system programmers.
 //*
 //* 13) When not using AUTOUID and AUTOGID to assign z/OS UNIX UID
@@ -84,13 +84,13 @@
 //*    TO ALTER SECURITY DEFINITONS
 //*
 //* 2. The sample ACF2 commands create ROLEs that match the group
-//*    names. Due to permits assigned to the &${STCGROUP} ROLE, it is
+//*    names. Due to permits assigned to the &STCGROUP ROLE, it is
 //*    advised to ensure this ROLE has a unique identifier.
 //*
-//* 3. The Zowe started task user ID (variable ${ZOWEUSER}) must be able
+//* 3. The Zowe started task user ID (variable ZOWEUSER) must be able
 //*    to write persistent data in the zlux-app-server/deploy directory
 //*    structure. This sample JCL makes the Zowe started task part of
-//*    the Zowe administrator group (SET ${STCGROUP}=&${ADMINGRP}. statement)
+//*    the Zowe administrator group (SET STCGROUP=&ADMINGRP. statement)
 //*    to achieve this goal. Another solution, also below, which you can
 //*    comment out, is giving the Zowe started task CONTROL access to
 //*    the UNIXPRIV SUPERUSER.FILESYS profile.
@@ -101,19 +101,19 @@
 //*********************************************************************
 //         EXPORT SYMLIST=*
 //*
-//         SET  PRODUCT=${PRODUCT}      * RACF, ACF2, or TSS
+//         SET  PRODUCT=${PRODUCT}       * RACF, ACF2, or TSS
 //*                     12345678
-//         SET ADMINGRP=${ZWEADMIN}     * group for Zowe administrators
-//         SET STCGROUP=${STCGROUP}     * group for Zowe started tasks
-//         SET ZOWEUSER=${ZWESVUSR}     * userid for Zowe started task
-//         SET XMEMUSER=${ZWESIUSR}     * userid for xmem started task
-//         SET  AUXUSER=${AUXUSER}      * userid for xmem AUX started task
-//         SET  ZOWESTC=${ZWESVSTC}     * Zowe started task name
-//         SET  XMEMSTC=${ZWESISTC}     * xmem started task name
-//         SET   AUXSTC=${ZWESASTC}     * xmem AUX started task name
-//         SET      HLQ=${ZWE}          * data set high level qualifier
-//         SET  SYSPROG=${SYSPROG}      * system programmer user ID/group
-//*                      12345678
+//         SET ADMINGRP=${ADMINGRP}  * group for Zowe administrators
+//         SET STCGROUP=${STCGROUP}  * group for Zowe started tasks
+//         SET ZOWEUSER=${ZOWEUSER}  * userid for Zowe started task
+//         SET XMEMUSER=${XMEMUSER}  * userid for xmem started task
+//         SET  AUXUSER=${AUXUSER}   * userid for xmem AUX started task
+//         SET  ZOWESTC=${ZOWESTC}  * Zowe started task name
+//         SET  XMEMSTC=${XMEMSTC}  * xmem started task name
+//         SET   AUXSTC=${AUXSTC}  * xmem AUX started task name
+//         SET      HLQ=${HLQ}    * data set high level qualifier
+//         SET  SYSPROG=${SYSPROG}   * system programmer user ID/group
+//*                     12345678
 //*
 //* The sample RACF and ACF2 commands assume AUTOUID and AUTOGID are
 //* enabled. When this is not the case, or you are using Top Secret,
